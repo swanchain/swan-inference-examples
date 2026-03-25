@@ -28,22 +28,51 @@ GOOS=linux GOARCH=arm GOARM=7 go build -o swan-chat-armv7 .  # Raspberry Pi 3, o
 GOOS=linux GOARCH=riscv64 go build -o swan-chat-riscv64 .    # RISC-V boards (Sipeed, StarFive)
 ```
 
-Binary size: ~6MB (no CGO, no runtime dependencies).
+Binary size: ~7MB (no CGO, no runtime dependencies).
+
+### Configure
+
+Edit `config.json` with your API key:
+
+```json
+{
+  "base_url": "https://inference.swanchain.io/v1",
+  "api_key": "sk-swan-YOUR-API-KEY",
+  "model": "zai-org/GLM-4.7-Flash",
+  "max_tokens": 200
+}
+```
+
+Config is loaded from (in priority order):
+1. `./config.json` (current directory)
+2. `~/.swan-chat/config.json` (home directory)
+3. Environment variables (`SWAN_API_KEY`, `SWAN_BASE_URL`, `SWAN_MODEL`)
 
 ### Run
 
 ```bash
-export SWAN_API_KEY=sk-swan-YOUR-API-KEY
 ./swan-chat "What is decentralized AI?"
 ./swan-chat "Translate 'hello world' to Chinese"
+```
+
+Or use env vars instead of config file:
+
+```bash
+export SWAN_API_KEY=sk-swan-YOUR-API-KEY
+./swan-chat "Hello"
 ```
 
 ### Deploy to Edge Device
 
 ```bash
-# Copy to Raspberry Pi
-scp swan-chat-arm64 pi@raspberrypi:~/
-ssh pi@raspberrypi 'SWAN_API_KEY=sk-swan-xxx ./swan-chat "Hello from edge"'
+# Build for ARM64
+GOOS=linux GOARCH=arm64 go build -o swan-chat-arm64 .
+
+# Copy binary + config to Raspberry Pi
+scp swan-chat-arm64 config.json pi@raspberrypi:~/
+
+# Run on the Pi
+ssh pi@raspberrypi './swan-chat-arm64 "Hello from edge"'
 ```
 
 ## PicoClaw Agent Setup

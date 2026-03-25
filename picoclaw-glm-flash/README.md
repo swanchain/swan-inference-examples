@@ -148,6 +148,42 @@ The `config.json` connects PicoClaw to Swan Inference:
 
 Your edge device sends a lightweight HTTP request. Swan Chain's GPU providers handle the heavy inference. You get GPT-class AI on a $35 Raspberry Pi.
 
+## Verified Test Results
+
+Tested with PicoClaw v0.2.3 + GLM-4.7-Flash on Swan Inference (March 2026):
+
+```
+$ echo "What is Swan Chain in 2 sentences?" | picoclaw agent
+
+🦞 Interactive mode (Ctrl+C to exit)
+INF  Agent initialized  tools_count=13
+INF  LLM requested tool calls  tools=["web_search"]
+INF  Tool call: web_search({"count":5,"query":"Swan Chain blockchain"})
+INF  Tool execution completed  duration_ms=789
+INF  LLM response without tool calls (direct answer)  iterations=2
+
+🦞 Swan Chain is a comprehensive AI blockchain infrastructure launched
+in 2021 that provides decentralized storage, computing, bandwidth, and
+payment solutions, positioning itself at the forefront of bridging
+blockchain technology with the growing demand for accessible AI
+computing resources.
+```
+
+Key observations:
+- GLM-4.7-Flash autonomously used **tool calling** (web search) before answering
+- 2 LLM iterations: tool call + final answer
+- PicoClaw has 13 built-in tools available to the model
+- Total response time: ~2 seconds including web search
+
+### Go Client Test
+
+```
+$ ./swan-chat "Translate hello world to Chinese"
+你好世界
+
+[10 in + 3 out tokens, 176ms, model: zai-org/GLM-4.7-Flash]
+```
+
 ## Available Models
 
 | Model | Type | Best For |

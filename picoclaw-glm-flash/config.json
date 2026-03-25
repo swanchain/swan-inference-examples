@@ -1,5 +1,5 @@
 {
-  "base_url": "https://inference.swanchain.io/v1",
+  "base_url": "https://inference-dev.swanchain.io/v1",
   "api_key": "sk-swan-YOUR-API-KEY",
   "model": "zai-org/GLM-4.7-Flash",
   "max_tokens": 200

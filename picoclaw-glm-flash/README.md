@@ -79,17 +79,29 @@ ssh pi@raspberrypi './swan-chat-arm64 "Hello from edge"'
 
 For the full PicoClaw AI agent experience (interactive terminal, tool use, multi-model):
 
-### 1. Install PicoClaw
+### 1. Install PicoClaw (v0.2.3+)
 
 ```bash
-# Download binary
-curl -LO https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw-linux-amd64
-chmod +x picoclaw-linux-amd64
-sudo mv picoclaw-linux-amd64 /usr/local/bin/picoclaw
+# Linux x86_64
+curl -LO https://github.com/sipeed/picoclaw/releases/download/v0.2.3/picoclaw_Linux_x86_64.tar.gz
+tar xzf picoclaw_Linux_x86_64.tar.gz && sudo mv picoclaw /usr/local/bin/
 
-# Or ARM64
-curl -LO https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw-linux-arm64
+# Linux ARM64 (Raspberry Pi 4/5, Jetson)
+curl -LO https://github.com/sipeed/picoclaw/releases/download/v0.2.3/picoclaw_Linux_arm64.tar.gz
+tar xzf picoclaw_Linux_arm64.tar.gz && sudo mv picoclaw /usr/local/bin/
+
+# Linux RISC-V
+curl -LO https://github.com/sipeed/picoclaw/releases/download/v0.2.3/picoclaw_Linux_riscv64.tar.gz
+
+# macOS (Apple Silicon)
+curl -LO https://github.com/sipeed/picoclaw/releases/download/v0.2.3/picoclaw_Darwin_arm64.tar.gz
+
+# Debian/Ubuntu packages also available (.deb)
+curl -LO https://github.com/sipeed/picoclaw/releases/download/v0.2.3/picoclaw_aarch64.deb
+sudo dpkg -i picoclaw_aarch64.deb
 ```
+
+All platforms: [github.com/sipeed/picoclaw/releases/tag/v0.2.3](https://github.com/sipeed/picoclaw/releases/tag/v0.2.3)
 
 ### 2. Configure
 

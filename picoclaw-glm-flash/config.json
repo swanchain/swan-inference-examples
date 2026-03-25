@@ -1,0 +1,31 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "~/.picoclaw/workspace",
+      "model_name": "glm-4.7-flash",
+      "max_tokens": 8192,
+      "temperature": 0.7,
+      "max_tool_iterations": 20
+    }
+  },
+  "model_list": [
+    {
+      "model_name": "glm-4.7-flash",
+      "model": "openai/zai-org/GLM-4.7-Flash",
+      "api_base": "https://inference.swanchain.io/v1",
+      "api_key": "sk-swan-YOUR-API-KEY"
+    },
+    {
+      "model_name": "qwen-7b",
+      "model": "openai/Qwen/Qwen2.5-7B-Instruct",
+      "api_base": "https://inference.swanchain.io/v1",
+      "api_key": "sk-swan-YOUR-API-KEY"
+    },
+    {
+      "model_name": "cydonia-24b",
+      "model": "openai/TheDrummer/Cydonia-24B-v4.1",
+      "api_base": "https://inference.swanchain.io/v1",
+      "api_key": "sk-swan-YOUR-API-KEY"
+    }
+  ]
+}

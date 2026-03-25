@@ -1,0 +1,7 @@
+{
+  "name": "swan-inference-nodejs-example",
+  "type": "module",
+  "dependencies": {
+    "openai": "^4.0.0"
+  }
+}

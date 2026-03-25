@@ -3,3 +3,4 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+swan-chat*\npicoclaw-*\n*.tar.gz\n*.deb\n*.rpm
